@@ -20,6 +20,7 @@ struct Recipe: Codable {
     let time: String?
     let number: String?
     let image: String?
+    let filter: String?
     let steps: [Step]?
     let ingredient: [Ingredient]?
 }
@@ -40,7 +41,7 @@ router.get("/") {
 
 
     let data = Recipies(data: [
-        Recipe(name: "Tournedos de bœuf au boursin", time: "20 min", number: "4 personnes", image: "R1", steps: [
+        Recipe(name: "Tournedos de bœuf au boursin", time: "20 min", number: "4 personnes", image: "R1", filter:"noFilter", steps: [
             Step(text: "Péparer la sauce : dans une casserole mettre 4 cuillères à café de fond de veau, ajoutez une petite tasse d'eau et mettre sur le feu."),
             Step(text: "Mélanger à l'aide d'une cuillère en bois, jusqu'à obtenir un mélange homogène et lisse. Ajouter la moitié du boursin et remuer jusqu'à ce qu'il soit complètement fondu."),
             Step(text: "Incorporer 20 cl de crème liquide et réserver au chaud."),
@@ -53,7 +54,7 @@ router.get("/") {
             Ingredient(name: "crème liquide", category: "BOF", quantity: "20 cl"),
             Ingredient(name: "fond de veau déshydraté", category: "Épicerie", quantity: "4 cc")
         ]),
-    Recipe(name: "Magrets de canard au miel", time: "20 min", number: "2 personnes", image: "R2", steps: [
+    Recipe(name: "Magrets de canard au miel", time: "20 min", number: "2 personnes", image: "R2", filter:"noFilter", steps: [
         Step(text: "Inciser les magrets côté peau en quadrillage sans couper la viande."),
         Step(text: "Cuire les magrets à feu vif dans une cocotte en fonte, en commençant par le coté peau."),
         Step(text: "Le temps de cuisson dépend du fait qu'on aime la viande plus ou moins saignante. Compter environ 5 min de chaque côté. Retirer régulièrement la graisse en cours de cuisson."),
@@ -65,7 +66,19 @@ router.get("/") {
         Ingredient(name: "magrets de canard", category: "Viande", quantity: "2"),
         Ingredient(name: "miel", category: "Épicerie", quantity: "2 cs"),
         Ingredient(name: "vinaigre balsamique", category: "Épicerie", quantity: "3 cc")
-    ])
+        ]),
+    
+    Recipe(name: "Pkaïla", time: "10 min", number: "8 personnes", image: "R2", filter:"kosher", steps: [
+        Step(text: "Dans une grande marmite, mettez tous les ingrédients à froid, à part les haricots et couvrez d’eau."),
+        Step(text: "Laissez cuire couvercle fermé pendant 1h30 avant d’y ajouter les haricots."),
+        Step(text: "Vérifiez l’assaisonnement en goûtant et salez de nouveau si besoin est. Cette recette a besoin d’être bien salée pour relever les saveurs des herbes."),
+        Step(text: "Laissez mijoter à découvert encore une bonne demi-heure."),
+        Step(text: "En accompagnement le meilleur serait un bon couscous fait maison"),
+        ], ingredient: [
+            Ingredient(name: "basse côte", category: "Viande", quantity: "4"),
+            Ingredient(name: "botte menthe fraîche", category: "Épicerie", quantity: "2 cs"),
+            Ingredient(name: "lingot harricot blanc", category: "Épicerie", quantity: "500 g")
+        ])
     ])
 
 
